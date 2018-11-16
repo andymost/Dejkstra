@@ -1,8 +1,8 @@
 from random import random
 
-GRAPH_N = 10000
+GRAPH_N = 8000
 LEAD_VERTEX = 0
-EDGE_PROB = 0.4
+EDGE_PROB = 0.5
 
 spaced = lambda char, pos: str(char) if pos == 0 else ' %s' % char
 roundedX10 = lambda val: round(val * 10)

@@ -24,15 +24,26 @@ from dejkstra import dejkstra
 from print_pathes import print_pathes
 import time
 
-EXAMPLE_STR = 'examples/20_0.5.txt'
+EXAMPLE_STR = 'examples/8000_0.5.txt'
+N_TIMES = 10
 
 input = read_graph(EXAMPLE_STR)
-start_time = time.time()
-pathes_s = dejkstra_simple(input)
-print("--- %s seconds ---" % (time.time() - start_time))
-start_time = time.time()
-pathes = dejkstra(input)
-print("--- %s seconds ---" % (time.time() - start_time))
-print_pathes(pathes)
-print_pathes(pathes_s)
+acc_simple = 0.0
+acc_heaped = 0.0
+
+
+i = 0
+while i < N_TIMES:
+    i = i + 1
+    start_time_s = time.time()
+    pathes_s = dejkstra_simple(input)
+    acc_simple = acc_simple + (time.time() - start_time_s)
+
+    start_time = time.time()
+    pathes = dejkstra(input)
+    acc_heaped = acc_heaped + (time.time() - start_time)
+
+print('Simple %s' % (acc_simple/N_TIMES))
+print('Heaped %s' % (acc_heaped/N_TIMES))
+
 
